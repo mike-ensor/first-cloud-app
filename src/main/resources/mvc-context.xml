@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:p="http://www.springframework.org/schema/p"
+             xmlns:mvc="http://www.springframework.org/schema/mvc"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+
+    <context:component-scan base-package="com.ensor.web"/>
+
+    <context:component-scan base-package="com.ensor.web.controller" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basenames="classpath:messages"
+          p:defaultEncoding="utf-8"
+          p:fallbackToSystemLocale="true"/>
+
+    <beans:bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <!-- Converters go here...these are used instead of PropertyEditors, though, need one class for to and from string, kind of a pain...good idea to write a static factory -->
+            </set>
+        </property>
+    </beans:bean>
+
+    <bean id="validationMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basenames="classpath:ValidationMessages"
+          p:defaultEncoding="utf-8"
+          p:fallbackToSystemLocale="true"/>
+
+    <beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" p:validationMessageSource-ref="validationMessageSource"/>
+
+    <mvc:annotation-driven validator="validator" conversion-service="conversionService"/>
+
+</beans:beans>

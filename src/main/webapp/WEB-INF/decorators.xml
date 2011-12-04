@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<decorators defaultdir="/WEB-INF/jsp/decorators">
+
+    <excludes>
+        <pattern>/*.jspf</pattern>
+    </excludes>
+
+
+    <decorator name="main" page="main.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+
+    <decorator name="empty" page="empty.jsp"/>
+
+</decorators>

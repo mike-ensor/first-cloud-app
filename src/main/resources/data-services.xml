@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:cloud="http://schema.cloudfoundry.org/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                           http://www.springframework.org/schema/data/mongo
+                           http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+                           http://schema.cloudfoundry.org/spring
+                           http://schema.cloudfoundry.org/spring/cloudfoundry-spring.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <context:component-scan base-package="com.ensor.data"/>
+
+    <!-- MUST BE BEFORE PROFILE BEANS -->
+    <bean class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoFactory"/>
+    </bean>
+
+    <beans:beans profile="default">
+        <mongo:mongo id="mongo"/>
+        <mongo:db-factory host="localhost" port="27017" id="mongoFactory" dbname="local" mongo-ref="mongo"/>
+    </beans:beans>
+
+    <beans:beans profile="cloud">
+        <cloud:mongo-db-factory id="mongoFactory" service-name="second" />
+    </beans:beans>
+
+</beans>

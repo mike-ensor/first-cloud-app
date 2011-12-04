@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!-- Name of the context. Very handy to avoid log hijacking -->
+    <contextName>mikeensor</contextName>
+
+    <!-- Enable JMX configuration -->
+    <jmxConfigurator/>
+
+    <!-- Defines the format for log entries. -->
+    <property name="logEntryFormat" value="%-12date{HH:mm:ss.SSS}  %-5level  %-40logger{40} -> %msg%n"/>
+    <property name="logBase" value="target/logs"/>
+
+    <!-- com.clickconcepts -->
+    <property name="logFileBase" value="target/logs/application" type="java.lang.String"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>${logFileBase}/testFile.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.clickconcepts" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="fileAppender"/>
+    </root>
+
+</configuration>
