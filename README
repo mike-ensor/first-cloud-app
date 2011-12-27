@@ -5,8 +5,7 @@ To run this application, you must have Maven 3 and JDK 1.6+ installed and workin
 To run, type:
 mvn clean package cargo:run
 
-There are enhancements you can add to this configuration, like using JRebel and adding remote debugging. To enable both JRebel and remote debugging,
-simply add a profile in your settings.xml file:
+There are enhancements you can add to this configuration, like using JRebel and adding remote debugging. To enable both JRebel and remote debugging, simply add a profile in your settings.xml file:
 
 ...
 ...
@@ -29,6 +28,4 @@ simply add a profile in your settings.xml file:
 
 
 Reasoning behind using Cargo + Tomcat 7
-The reason for tomcat 7 is to better replicate the production environment of many companies.  Typically the artifact of a build is a WAR, which is then deployed to
-Tomcat. One good way of doing this is to publish your WAR file to a repository like Artifactory, Nexus or Apache Artifact Repository.  During your deployment phase
-the artifact can be pulled from the repository.  This configuration is set up to replicate most of that configuration.
+The reason for tomcat 7 is to better replicate the production environment of many companies.  Typically the artifact of a build is a WAR, which is then deployed to Tomcat. One good way of doing this is to publish your WAR file to a repository like Artifactory, Nexus or Apache Artifact Repository.  During your deployment phase the artifact can be pulled from the repository.  This configuration is set up to replicate most of that configuration.
