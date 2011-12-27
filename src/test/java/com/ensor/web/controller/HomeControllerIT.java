@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static java.lang.String.format;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.startsWith;
@@ -29,7 +28,7 @@ public class HomeControllerIT {
 
     @Test
     public void testShowHomePage() throws Exception {
-        String url = format("%s%s", BASE_URL, "/webapp/home");
+        String url = format("%s%s", BASE_URL, "/home");
 
         HtmlPage page = (HtmlPage) webClient.getPage(url);
 

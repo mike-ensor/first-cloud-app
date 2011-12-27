@@ -1,7 +1,7 @@
 package com.ensor.web.controller;
 
-import com.ensor.data.User;
 import com.ensor.data.dao.UserDao;
+import com.ensor.model.User;
 import com.ensor.web.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
