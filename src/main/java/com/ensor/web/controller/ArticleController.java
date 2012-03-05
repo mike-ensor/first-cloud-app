@@ -31,11 +31,8 @@ public class ArticleController {
 
     @RequestMapping(method = RequestMethod.POST, params = "type=blog")
     public String submit(@ModelAttribute("article") ArticleModel model) {
-
         Article blog = new BlogArticle(model.getSubject(), model.getFromSource());
-
         articleRepository.save(blog);
-
         return "redirect:/article";
     }
 
