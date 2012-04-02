@@ -2,6 +2,7 @@ package com.ensor.data.service;
 
 import com.ensor.model.Article;
 import com.ensor.model.BlogArticle;
+import com.google.common.annotations.VisibleForTesting;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoException;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 public class DbHelper {
 
     @Autowired
+    @VisibleForTesting
     MongoTemplate mongoTemplate;
 
     public String getDump(Class<?> entityClass) {
@@ -36,7 +38,7 @@ public class DbHelper {
         return ret;
     }
 
-    public void clear(Class clazz) {
+    public void clear(Class<?> clazz) {
         if (mongoTemplate.collectionExists(clazz)) {
             mongoTemplate.dropCollection(clazz);
         }

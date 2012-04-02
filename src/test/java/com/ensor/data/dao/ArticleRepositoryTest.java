@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "article-test-context.xml")
+@ContextConfiguration(locations = "/article-test-context.xml")
 public class ArticleRepositoryTest {
 
     @Autowired

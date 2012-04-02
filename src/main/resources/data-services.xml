@@ -27,13 +27,13 @@
         <constructor-arg name="mongoDbFactory" ref="mongoFactory"/>
     </bean>
 
-    <beans:beans profile="default">
+    <!--<beans:beans profile="default">-->
         <mongo:mongo id="mongo"/>
         <mongo:db-factory host="localhost" port="27017" id="mongoFactory" dbname="local" mongo-ref="mongo"/>
-    </beans:beans>
+    <!--</beans:beans>-->
 
-    <beans:beans profile="cloud">
-        <cloud:mongo-db-factory id="mongoFactory" service-name="second"/>
-    </beans:beans>
+    <!--<beans:beans profile="cloud">-->
+        <!--<cloud:mongo-db-factory id="mongoFactory" service-name="second"/>-->
+    <!--</beans:beans>-->
 
 </beans>

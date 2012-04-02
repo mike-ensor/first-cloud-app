@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 public class HomeController {
 
-//    private ObjectMapper mapper = new ObjectMapper();
-
     /**
      * No additional request value mapping, but forces to only GET requests
      * @return String viewForInternalViewResolver
