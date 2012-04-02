@@ -1,6 +1,6 @@
 ## How to run ##
 
-To run this application, you must have Maven 3 and JDK 1.6+ installed and working
+To run this application, you must have Maven 3 and JDK 1.6+ installed and working AND MongoDB 1.8+ running locally for the tests to run
 
 To run, type:
 mvn clean package cargo:run
